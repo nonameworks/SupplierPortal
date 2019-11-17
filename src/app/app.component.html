@@ -1,0 +1,41 @@
+<div style="margin: 5px;">
+<mat-card>
+  <mat-card-title>
+      Select a site
+  </mat-card-title>
+  <mat-form-field>
+    <mat-select (selectionChange)="getDetails()" [(ngModel)]="selectedSite">
+      <mat-option *ngFor="let site of sites" [value]="site">
+          {{site.Name}}
+        
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+<mat-card>
+    <mat-card-title>
+        Unprocessed Details
+    </mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let detail of unprocessedDetails">
+          <mat-checkbox [(ngModel)]="detail.Assigned" (change)="detailChanged(detail)"></mat-checkbox>
+          <button mat-button (click)="doSomething(detail)">
+              {{detail.DetailNo}}
+            </button> </mat-list-item>
+    </mat-list>
+  </mat-card>
+  <mat-card>
+      <mat-card-title>
+          
+          Processing
+      </mat-card-title>
+      <mat-list>
+        <mat-list-item *ngFor="let detail of processingDetails">
+            <mat-checkbox [(ngModel)]="detail.Assigned" (change)="detailChanged(detail)"></mat-checkbox>
+            <button mat-button (click)="doSomething(detail)">
+                {{detail.DetailNo}}
+              </button> </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+<router-outlet></router-outlet>
